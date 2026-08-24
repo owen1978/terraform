@@ -9,8 +9,7 @@ A single `main.tf` provisions a small but complete network + compute stack in Az
 
 - **2 resource groups** — one for networking, one for the VM (separating concerns by lifecycle)
 - **Virtual network + subnet** (`10.0.0.0/16`, subnet `10.0.1.0/24`)
-- **Network Security Group** with an inbound rule allowing HTTP/HTTPS (ports 80 and 443),
-  associated to the subnet
+- **Network Security Group** with an inbound rule allowing HTTP (port 80) associated to the subnet
 - **Public IP** (static) and **network interface** for the VM
 - **Linux VM** (Ubuntu 22.04 LTS, `Standard_B2ms`), provisioned with:
   - SSH key-based authentication (no passwords)

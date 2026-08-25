@@ -24,9 +24,6 @@ maintainable at scale. Each numbered folder is a self-contained step up in compl
 - **`02_intermediate`** — Splitting configuration into purpose-specific files
   (`network.tf`, `compute.tf`, `variables.tf`, `outputs.tf`) and driving values through
   `terraform.tfvars` instead of hardcoding.
-- **`03_advanced`** — Reusable Terraform modules (`_modules/azure/...`), `for_each`-driven
-  multi-resource deployments, and module composition (e.g. linking a virtual network module
-  instance to a specific resource group module instance via a lookup key).
 
 ## Notes
 

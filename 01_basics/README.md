@@ -55,5 +55,3 @@ This is step one in a progression through this repo:
    what each Azure resource does and how they connect.
 2. **`02_intermediate`** — building on the basics with more configurable, variable-driven
    deployments.
-3. **`03_advanced`** — reusable Terraform **modules** (`_modules/azure/...`), `for_each`-driven
-   multi-resource deployments, and module composition patterns.

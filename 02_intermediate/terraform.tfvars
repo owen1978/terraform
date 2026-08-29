@@ -1,3 +1,11 @@
+# Tags
+tags = {
+  environment = "dev"
+  project     = "terraform-labs"
+  owner       = "shofi-alom"
+  cost_center = "personal-portfolio"
+}
+
 # Resource Group
 vnetrg_name     = "rg-vnet-dev-uks"
 vnetrg_location = "UK South"
@@ -8,25 +16,24 @@ vmrg_location = "UK South"
 
 # Virtual Network
 vnetweb_name          = "vnet-web-dev-uks"
-vnetweb_address_space = ["10.0.0.0/8"]
+vnetweb_address_space = ["10.0.0.0/16"]
 
 # Subnet
 subnetweb_name             = "sub-web-dev-uks"
 subnetweb_address_prefixes = ["10.0.1.0/24"]
 
-#N etwork Security Group
+# Network Security Group
 nsgweb_name = "nsg-web-dev-uks"
 
 # Network Security Group Rule
-weballow_name                       = "allow-inbound-80"
-weballow_priority                   = 1000
-weballow_direction                  = "Inbound"
-weballow_access                     = "Allow"
-weballow_protocol                   = "Tcp"
-weballow_source_port                = "*"
-weballow_destination_port           = "80"
-weballow_source_address_prefix      = "*"
-weballow_destination_address_prefix = "*"
+web_nsg_rule = {
+  name                       = "allow-inbound-80"
+  priority                   = 1000
+  source_port_range          = "*"
+  destination_port_range     = "80"
+  source_address_prefix      = "*"
+  destination_address_prefix = "*"
+}
 
 # Public IP
 webvmpubip_name              = "pubip-web-dev-uks"

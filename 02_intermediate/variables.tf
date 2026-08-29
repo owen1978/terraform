@@ -1,3 +1,12 @@
+variable "subscription_id" {
+  type    = string
+  default = null
+}
+
+variable "tags" {
+  type        = map(string)
+}
+
 variable "vmrg_name" {
   type = string
 }
@@ -34,40 +43,16 @@ variable "nsgweb_name" {
   type = string
 }
 
-variable "weballow_name" {
-  type = string
-}
-
-variable "weballow_priority" {
-  type = number
-}
-
-variable "weballow_direction" {
-  type = string
-}
-
-variable "weballow_access" {
-  type = string
-}
-
-variable "weballow_protocol" {
-  type = string
-}
-
-variable "weballow_source_port" {
-  type = string
-}
-
-variable "weballow_destination_port" {
-  type = string
-}
-
-variable "weballow_source_address_prefix" {
-  type = string
-}
-
-variable "weballow_destination_address_prefix" {
-  type = string
+variable "web_nsg_rule" {
+  type = object({
+    name                       = string
+    priority                   = number
+    source_port_range          = string
+    destination_port_range     = string
+    source_address_prefix      = string
+    destination_address_prefix = string
+  })
+  description = "Inbound allow rule for the web NSG. Direction/access/protocol aren't exposed here since this rule only ever allows inbound HTTP."
 }
 
 variable "webvmpubip_name" {

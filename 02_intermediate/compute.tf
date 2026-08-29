@@ -1,6 +1,7 @@
 resource "azurerm_resource_group" "vmrg" {
   name     = var.vmrg_name
   location = var.vmrg_location
+  tags     = var.tags
 }
 
 resource "azurerm_linux_virtual_machine" "webvm" {
@@ -31,4 +32,6 @@ resource "azurerm_linux_virtual_machine" "webvm" {
     sku       = var.webvm_sku
     version   = "latest"
   }
+
+  tags = var.tags
 }

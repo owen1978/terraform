@@ -7,8 +7,14 @@ terraform {
   }
 }
 
+variable "subscription_id" {
+  type    = string
+  default = null
+}
+
 provider "azurerm" {
   features {}
+  subscription_id = var.subscription_id
 }
 
 resource "azurerm_resource_group" "vnetrg" {
@@ -76,6 +82,7 @@ resource "azurerm_public_ip" "webvmpubip" {
   name                = "pubip-web-dev-uks"
   resource_group_name = azurerm_resource_group.vmrg.name
   location            = azurerm_resource_group.vmrg.location
+  sku                 = "Standard"
   allocation_method   = "Static"
   tags = {
     environment = "dev"

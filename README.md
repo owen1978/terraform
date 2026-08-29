@@ -27,8 +27,9 @@ maintainable at scale. Each numbered folder is a self-contained step up in compl
 
 ## Notes
 
-- State files (`.tfstate`), the `.terraform/` cache, and provider lock files are excluded from
-  version control — see `.gitignore`.
+- State files (`.tfstate`) and the `.terraform/` cache are excluded from version control — see
+  `.gitignore`. Provider lock files (`.terraform.lock.hcl`) are intentionally committed, per
+  HashiCorp's recommendation, so dependency versions are pinned and reproducible.
 - `.tfvars` files in this repo are intentionally tracked (not gitignored) so the variable
   compositions are visible as part of this portfolio. They contain no secrets or credentials —
   only resource names, regions, and CIDR ranges.

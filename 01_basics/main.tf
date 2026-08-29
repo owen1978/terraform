@@ -73,6 +73,22 @@ resource "azurerm_network_security_rule" "weballow" {
   network_security_group_name = azurerm_network_security_group.nsgweb.name
 }
 
+# source_address_prefix is "*" for lab convenience; restrict to your own IP/CIDR
+# for anything beyond a throwaway lab.
+resource "azurerm_network_security_rule" "sshallow" {
+  name                        = "allow-inbound-22"
+  priority                    = 1010
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "22"
+  source_address_prefix       = "*"
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.vnetrg.name
+  network_security_group_name = azurerm_network_security_group.nsgweb.name
+}
+
 resource "azurerm_subnet_network_security_group_association" "nsgwebrule" {
   subnet_id                 = azurerm_subnet.subnetweb.id
   network_security_group_id = azurerm_network_security_group.nsgweb.id

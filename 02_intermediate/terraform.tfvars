@@ -35,6 +35,14 @@ web_nsg_rule = {
   destination_address_prefix = "*"
 }
 
+# Network Security Group Rule (SSH). "*" is for lab convenience — restrict to
+# your own IP/CIDR for anything beyond a throwaway lab.
+ssh_nsg_rule = {
+  name                  = "allow-inbound-22"
+  priority              = 1010
+  source_address_prefix = "*"
+}
+
 # Public IP
 webvmpubip_name              = "pubip-web-dev-uks"
 webvmpubip_allocation_method = "Static"

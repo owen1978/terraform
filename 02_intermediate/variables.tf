@@ -4,7 +4,7 @@ variable "subscription_id" {
 }
 
 variable "tags" {
-  type        = map(string)
+  type = map(string)
 }
 
 variable "vmrg_name" {
@@ -52,7 +52,14 @@ variable "web_nsg_rule" {
     source_address_prefix      = string
     destination_address_prefix = string
   })
-  description = "Inbound allow rule for the web NSG. Direction/access/protocol aren't exposed here since this rule only ever allows inbound HTTP."
+}
+
+variable "ssh_nsg_rule" {
+  type = object({
+    name                  = string
+    priority              = number
+    source_address_prefix = string
+  })
 }
 
 variable "webvmpubip_name" {

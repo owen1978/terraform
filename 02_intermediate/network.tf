@@ -40,6 +40,20 @@ resource "azurerm_network_security_rule" "weballow" {
   network_security_group_name = azurerm_network_security_group.nsgweb.name
 }
 
+resource "azurerm_network_security_rule" "sshallow" {
+  name                        = var.ssh_nsg_rule.name
+  priority                    = var.ssh_nsg_rule.priority
+  direction                   = "Inbound"
+  access                      = "Allow"
+  protocol                    = "Tcp"
+  source_port_range           = "*"
+  destination_port_range      = "22"
+  source_address_prefix       = var.ssh_nsg_rule.source_address_prefix
+  destination_address_prefix  = "*"
+  resource_group_name         = azurerm_resource_group.vnetrg.name
+  network_security_group_name = azurerm_network_security_group.nsgweb.name
+}
+
 resource "azurerm_subnet_network_security_group_association" "nsgwebrule" {
   subnet_id                 = azurerm_subnet.subnetweb.id
   network_security_group_id = azurerm_network_security_group.nsgweb.id
